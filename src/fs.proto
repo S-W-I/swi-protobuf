@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option go_package = "swi-protobuf/fs";
+
+message FileReprPair {
+    string path = 1;
+    string file_data = 2;
+ }
+ 
+ message FileSessionTree {
+    repeated FileReprPair paths = 1;
+ }
