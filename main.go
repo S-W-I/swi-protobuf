@@ -12,5 +12,10 @@ func main() {
 
 	_ = someth
 
-	// session := session.Session{}
+	session := session.Session{}
+
+	_ = session
+
+
+	// fs.FileSessionTree{}
 }

@@ -1,15 +1,25 @@
 syntax = "proto3";
 
-import "google/protobuf/any.proto";
-
 option go_package = "swi-protobuf/transport";
 
 
-message Response {
-    string message = 1;
-    repeated google.protobuf.Any result = 2;
-}
-
 message DropResponseMessage {
     string message = 1;
+}
+
+message RequestSessionBody {
+    string session_id = 1;
+}
+
+message UpdateSessionBody {
+    string              session_id = 1;
+    map<string, string> tree = 2;
+}
+
+message CompileSessionBody {
+    string session_id = 1;
+}
+
+message DownloadCompiledSessionBody {
+    string session_id = 1;
 }
