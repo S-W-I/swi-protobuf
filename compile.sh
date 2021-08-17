@@ -25,19 +25,12 @@ directories=(app fs session transport)
 
 for file in ${directories[@]}
 do
-    # protoc \
-    #     --plugin="protoc-gen-ts=${PROTOC_GEN_TS_PATH}" \
-    #     --js_out="import_style=commonjs,binary:${OUT_DIR}" \
-    #     --ts_out="${OUT_DIR}" \
-    #     "./src/$file.proto"
 
     protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto \
         --ts_proto_opt=snakeToCamel=false \
+        --ts_proto_opt=esModuleInterop=true \
         --ts_proto_out=./out-ts "./src/$file.proto"
 
-    # protoc --plugin=./node_modules/ts-proto/protoc-gen-ts_proto \
-    #     "./src/$file.proto"
-    # protoc --plugin=node_modules/ts-proto/protoc-gen-ts_proto ./batching.proto -I.
 done
 
 cp -r out-ts/src/* ../selenium-web/src/protobuf
